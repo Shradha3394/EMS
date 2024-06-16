@@ -28,11 +28,11 @@ export default function App() {
     }
 
     function handleLogout() {
-        // instance.logoutPopup(authScopes).then(response => {
+        instance.logoutPopup().then(response => {
 
-        // }).catch(e => {
-        //     console.log(e);
-        // });
+        }).catch(e => {
+            console.log(e);
+        });
     }
 
     return (
