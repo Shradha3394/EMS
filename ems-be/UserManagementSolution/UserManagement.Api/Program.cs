@@ -1,5 +1,6 @@
 using Azure.Identity;
 using UserManagement.Common.Constants;
+using UserManagement.Data;
 
 namespace UserManagement.Api
 {
@@ -20,6 +21,7 @@ namespace UserManagement.Api
 
             // Add services to the container.
 
+            builder.Services.AddDbContext(builder.Configuration);
             builder.Services.AddControllers();
 
             var app = builder.Build();
