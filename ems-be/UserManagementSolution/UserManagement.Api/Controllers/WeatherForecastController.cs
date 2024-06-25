@@ -12,15 +12,18 @@ namespace UserManagement.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var val = _configuration["test"];
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

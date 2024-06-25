@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserManagement.Data.Data;
 
@@ -10,9 +11,11 @@ using UserManagement.Data.Data;
 namespace UserManagement.Data.Migrations
 {
     [DbContext(typeof(EmsDataContext))]
-    partial class EmsDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240621131425_AlterAdB2CIdDataType")]
+    partial class AlterAdB2CIdDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

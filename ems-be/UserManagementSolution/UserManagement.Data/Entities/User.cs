@@ -10,7 +10,7 @@ namespace UserManagement.Data.Entities
         public int Id { get; set; }
 
         [Required]
-        public int AdB2CId { get; set; }
+        public string AdB2CId { get; set; }
 
         [Required]
         [StringLength(50)]
