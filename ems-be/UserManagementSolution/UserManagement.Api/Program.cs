@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
 using UserManagement.Common.Constants;
 using UserManagement.Data;
 
@@ -23,6 +24,14 @@ namespace UserManagement.Api
 
             builder.Services.AddDbContext(builder.Configuration);
             builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            // Suppress the automatic model state validation globally
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             var app = builder.Build();
 
@@ -33,6 +42,9 @@ namespace UserManagement.Api
             app.UseAuthorization();
 
             app.MapControllers();
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.Run();
         }
