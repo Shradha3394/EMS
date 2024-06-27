@@ -2,7 +2,7 @@
 
 namespace UserManagement.Data.Repository.Abstract;
 
-internal interface IUserRepository
+public interface IUserRepository
 {
     Task<List<User?>> GetUsersAsync();
     Task<User?> GetUserByIdAsync(int id);

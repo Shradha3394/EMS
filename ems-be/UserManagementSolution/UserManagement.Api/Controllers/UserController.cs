@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using UserManagement.Api.Filters;
 using UserManagement.Common.Dtos;
 using UserManagement.Common.Models;
+using UserManagement.Services.Abstract;
 
 namespace UserManagement.Api.Controllers;
 
@@ -43,7 +43,7 @@ public class UserController : Controller
             return BadRequest(new BaseResponse<string>(string.Join(";", errors)));
         }
 
-        var user = new User
+        var user = new CreateUserDto()
         {
             // Map userDto to user model
         };
@@ -53,7 +53,7 @@ public class UserController : Controller
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+    public async Task<IActionResult> UpdateUser(int id, [FromBody] CreateUserDto user)
     {
         if (!ModelState.IsValid)
         {

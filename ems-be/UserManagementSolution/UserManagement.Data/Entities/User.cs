@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace UserManagement.Data.Entities
 {
     [Table("User")]
-    internal class User
+    public class User
     {
         [Key]
         public int Id { get; set; }
