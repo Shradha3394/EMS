@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UserManagement.Api.Filters;
 using UserManagement.Common.Dtos;
 using UserManagement.Common.Models;
 
