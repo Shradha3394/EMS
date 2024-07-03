@@ -62,4 +62,10 @@ public class UserController : Controller
         await _userService.DeleteUserAsync(id);
         return NoContent();
     }
+
+    [HttpGet("HelloWorld")]
+    public async Task<IActionResult> HelloWorld()
+    {
+        return Ok("Hello World!");
+    }
 }
