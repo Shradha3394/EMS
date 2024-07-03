@@ -29,7 +29,7 @@ jobs:
         run: dotnet build ./ems-be/UserManagementSolution/UserManagementSolution.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./ems-be/UserManagementSolution/UserManagementSolution.sln --configuration Release --no-build
+        run: dotnet publish ./ems-be/UserManagementSolution/UserManagementSolution.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE }}'
 
       - name: Azure Deployment
         uses: azure/webapps-deploy@v2
