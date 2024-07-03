@@ -8,7 +8,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: UserManagement.Api/published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: UserManagement.Api
+  WORKING_DIRECTORY: ./ems-be/UserManagementSolution
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.ems_user_api_429F }}
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
