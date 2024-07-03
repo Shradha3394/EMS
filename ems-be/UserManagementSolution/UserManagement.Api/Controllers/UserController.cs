@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UserManagement.Common.Dtos;
 using UserManagement.Common.Models;
 using UserManagement.Services.Abstract;
 
 namespace UserManagement.Api.Controllers;
 
-[ApiController]
 [Route("api/[controller]")]
+[ApiController]
 public class UserController : Controller
 {
     private readonly IUserService _userService;
@@ -16,6 +17,7 @@ public class UserController : Controller
         _userService = userService;
     }
 
+    [Authorize]
     [HttpGet("GetUsers")]
     public async Task<IActionResult> GetUsers()
     {
@@ -37,18 +39,7 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userDto)
     {
-        if (!ModelState.IsValid)
-        {
-            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-            return BadRequest(new BaseResponse<string>(string.Join(";", errors)));
-        }
-
-        var user = new CreateUserDto()
-        {
-            // Map userDto to user model
-        };
-
-        var createdUser = await _userService.CreateUserAsync(user);
+        var createdUser = await _userService.CreateUserAsync(userDto);
         return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
     }
 

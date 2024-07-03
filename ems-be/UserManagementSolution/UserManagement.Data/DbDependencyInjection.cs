@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using UserManagement.Common.Constants;
 using UserManagement.Data.Data;
+using UserManagement.Data.Repository.Abstract;
+using UserManagement.Data.Repository.Concrete;
 
 namespace UserManagement.Data
 {
@@ -13,6 +15,7 @@ namespace UserManagement.Data
         {
             services.AddDbContext<EmsDataContext>(options =>
                 options.UseSqlServer(GetConnectionString(configuration)));
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
 

@@ -7,5 +7,5 @@ public static class KeyVaultSecretConst
     public const string EmsDbName = "ems-db-name";
     public const string EmsDbUser = "ems-db-user";
     public const string EmsDbPassword = "ems-db-password";
-
+    public const string JwtSecretKey = "ems-jwt-secret-key";
 }
