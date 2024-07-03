@@ -20,7 +20,7 @@ jobs:
            dotnet-version: '8.0.x'
       
       - name: Restore
-        run: dotnet restore ./ems-be/UserManagementSolution.sln
+        run: dotnet restore ./ems-be/UserManagementSolution/UserManagementSolution.sln
 
       - name: Build
         run: dotnet build ./ems-be/UserManagementSolution/UserManagementSolution.sln --configuration Release --no-restore
